@@ -716,20 +716,29 @@ function render(variablesz = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variablesz.background}" /></div>`;
   let githubLink = `${variablesz.github}`;
+  let twitter = `${variablesz.twitter}`;
+  let linkedin = `${variablesz.linkedin}`;
+  let instagram = `${variablesz.instagram}`;
   if (variablesz.includeCover == false) cover = "<div class='cover'></div>";
+  if (variablesz.name === null) variablesz.name = "Lucy";
+  if (variablesz.lastname === null) variablesz.lastname = "Dylan";
+  if (variablesz.role === null) variablesz.role = "Janitor";
+  if (variablesz.country === null) variablesz.country = "Cuba";
+  if (variablesz.city === null) variablesz.city = "Havana";
+  if (variablesz.socialMediaPosition === null) variablesz.socialMediaPosition = "position-right";
 
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${window.variablesz.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/${variablesz.twitter}"><i class="fa fa-twitter"></i></a></li>
+          <h1>${variablesz.name} ${variablesz.lastname}</h1>
+          <h2>${variablesz.role}</h2>
+          <h3>${variablesz.city}, ${variablesz.country}</h3>
+          <ul class="${variablesz.socialMediaPosition}">
+            <li><a href="https://twitter.com/${twitter}"><i class="fa fa-twitter"></i></a></li>
             <li><a href="https://github.com/${githubLink}"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/${variablesz.linkedin}"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/alesanchezr"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://linkedin.com/${linkedin}"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${instagram}"><i class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -741,7 +750,7 @@ function render(variablesz = {}) {
 window.onload = function () {
   window.variablesz = {
     // if includeCover is true the algorithm should
-    includeCover: false,
+    includeCover: true,
     // this is the url of the image that will used as background for the profile cover
     background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
     // this is the url for the profile avatar
